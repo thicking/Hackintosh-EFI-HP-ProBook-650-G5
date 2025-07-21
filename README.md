@@ -1,5 +1,7 @@
 # Hackintosh EFI for HP ProBook 650 G5
 
+> 🇷🇺 [Читать на русском языке](./README.ru.md)
+
 Fully working EFI for macOS Ventura / Sonoma (tested), configured for HP ProBook 650 G5.
 
 > ⚠️ Stability: ~95%  
