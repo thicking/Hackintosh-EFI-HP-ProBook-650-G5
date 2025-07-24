@@ -1,1 +1,25 @@
+Если не загружается прошивка в Bluetooth
 
+sudo nano /usr/local/bin/bt-fix.sh                                           
+
+#!/bin/bash
+
+# Получаем Bluetooth адрес
+BT_STATUS=$(system_profiler SPBluetoothDataType | grep "Address:" | awk '{print $2}')
+
+if [[ "$BT_STATUS" == "NULL" ]] || [[ -z "$BT_STATUS" ]]; then
+    echo "[!] Bluetooth адрес NULL — перезапуск bluetoothd..."
+    sudo pkill bluetoothd
+    sleep 2
+    echo "[+] Попробуй включить Bluetooth вручную (в меню macOS)"
+else
+    echo "[+] Bluetooth адрес: $BT_STATUS (всё ок)"
+fi
+
+
+
+
+sudo chmod +x /usr/local/bin/bt-fix.sh
+
+запуск в automator
+osascript -e 'do shell script "/usr/local/bin/bt-fix.sh" with administrator privileges'
